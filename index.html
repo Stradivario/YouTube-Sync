@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>YouTube Sync</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/handler.js"></script>
+    <script src="js/youtube_controller.js"></script>
+    <script src="js/movie_search.js"></script>
+    <script src="js/peer.js"></script>
+    <script src="js/ConnectHost.js"></script>
+    
+    <script type="text/javascript">
+        function pressEnterKey(code) {
+            if(code == 13)
+                msgSend();
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <span>YouTube Sync</span>
+        <div class="information">
+            <div>ID: <span id="myId"></span></div>
+        </div>
+        <div class="id-input">
+            <label>相手のID: </label>
+            <input type="text" id="dst-id">
+            <input type="button" id="cnt-btn" value="接続" onclick="ConnectButtonListener();">
+            <span id="status">接続なし</span>
+        </div>
+    </div>
+    <div class="content">
+        <div id="player1"></div>
+        <div class="control">
+            <input type="text" id="murl" size="80" placeholder="URL">
+            <br>
+            <input type="button" value="再生" onclick="playButtonListener();">
+            <input type="button" value="停止" onclick="pauseButtonListener();">
+            <input type="button" value="セット" onclick="initialize();">
+            <input type="button" value="同期">
+        </div>
+        <div class="chat">
+            <div class="input">
+                <input type="text" size="48" id="msg" onkeypress="pressEnterKey(event.keyCode);">
+                <input type="button" value="送信" onclick="msgSend()">
+            </div> 
+            <div class="output">
+                <textarea cols="50" rows="25" id="msg-history"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class ="footer">
+        <div id="player2"></div>
+        <div class="url-input">
+            <input type="text" id="smurl" size="80" placeholder="検索ワード or URL">
+            <input type="button" value="検索" onclick="search();">
+            <input type="button" value="プッシュ(動画IDと位置)" onclick="pushButtonListener();">
+            <input type="button" value="動画をセット" onclick="initialize();">
+            <p>ex. https://www.youtube.com/watch?v=_2b0QdIn6P0</p>
+        </div>
+    </div>
+</body>
+</html>

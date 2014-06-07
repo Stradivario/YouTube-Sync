@@ -1,0 +1,67 @@
+body {
+    background-color: #white;
+}
+
+div.header {  
+    position: fixed !important;  
+    position: absolute;  
+    top: 0;  
+    left: 0;
+    width: 100%;  
+    height: 45px;  
+    border: solid 1px black;
+    background-color: white;
+}
+
+div.footer {  
+    position: fixed !important;  
+    position: absolute;  
+    bottom: 0;  
+    left: 0;  
+    width: 100%; 
+    height: 150px;
+    border: solid 1px black;
+    background-color: white;
+}
+
+div.information {
+    margin-left: 200px;
+    margin-top: -15px;
+}
+
+div.id-input {
+    margin-left: 400px;
+}
+
+div.content {
+    margin-top: 45px;
+    background-color: white;
+}
+
+#player1 {
+    margin-left: 50px;
+    margin-top: 70px;
+}
+
+.control {
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+div.chat {
+    margin-left: 750px;
+    margin-top: -350px;
+}
+
+#msg, #msg-history {
+    border: solid 1px black;
+    background-color: white;
+}
+
+.url-input, .seach-input {
+    margin-left: 250px;
+}
+
+#player2 {
+    float: left;
+}
