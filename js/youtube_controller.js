@@ -112,10 +112,3 @@ function pauseButtonListener() {
 function syncButtonListener() {
 
 }
-
-//メインプレーヤーの動画IDのセッター
-function pushIdFromSubToMain(fromId) {
-    alert(ytId);
-    ytId = fromId;
-    alert(ytId);
-}
