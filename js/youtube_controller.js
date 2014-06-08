@@ -7,7 +7,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var done = false;
 var sub_player;
-var startTime;
+var startTime = 0;
 
 //YouTubeの動画ID
 var ytId;
@@ -42,8 +42,22 @@ function onPlayerStateChange(evt) {
     //
 }
 
+function countSecond() {
+    startTime++;
+    console.log(startTime);
+}
+
+//再生してからの相対時間を計測
+function countTimeFromStart() {
+    setInterval("countSecond()", 1000);
+}
+
 function play() {
     player.playVideo();
+    
+    if(startTime == 0) {
+        countTimeFromStart();
+    }
 }
 
 function pause() {
@@ -53,11 +67,6 @@ function pause() {
 function stopVideo() {
     //stopVideo()は動画の読み込みも止める
     player.stopVideo();
-}
-
-//再生してからの相対時間を計測
-function countTimeFromStart() {
-    
 }
 
 function setYouTubeId(url) {
