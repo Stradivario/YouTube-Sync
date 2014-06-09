@@ -43,7 +43,7 @@ function onPlayerStateChange(evt) {
 }
 
 //5秒ずれると動画を停止(停止簿ボタン)
-function checkDelay() {
+function checkDelay() {  
     currentTime = getCurrentPosition();
     var gap = Math.abs(startTime - currentTime);
     if(gap >= 3) {
