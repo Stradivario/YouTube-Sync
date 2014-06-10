@@ -21,15 +21,6 @@ function onYouTubePlayerAPIReady() {
         }
     });
     
-    sub_player = new YT.Player('player2', {
-        height: '150',
-        width: '230',
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange,
-        }
-    });
-    
 }
         
 function onPlayerReady(evt) {
@@ -37,7 +28,12 @@ function onPlayerReady(evt) {
 }
 
 function onPlayerStateChange(evt) {
-    //
+    //too late!!
+    /***
+    if(evt.data == YT.PlayerState.PLAYING) {
+        countTimeFromStart();
+    }
+    ***/
 }
 
 //5秒ずれると動画を停止(停止簿ボタン)
@@ -118,5 +114,5 @@ function pauseButtonListener() {
 
 
 function syncButtonListener() {
-
+    sendRequest("2", "ytId", getCurrentPosition(), "pause");
 }
