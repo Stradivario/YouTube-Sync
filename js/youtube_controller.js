@@ -4,13 +4,11 @@ tag.src = "http://www.youtube.com/player_api";
 
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-var done = false;
-var sub_player;
-var startTime = 0;
-
-//YouTubeの動画ID
 var ytId;
+var done = false;
+var startTime = 0;
+var timer;
+
 
 //apiが読み込めた時のコールバック関数
 function onYouTubePlayerAPIReady() {
@@ -48,26 +46,26 @@ function checkDelay() {
     var gap = Math.abs(startTime - currentTime);
     if(gap >= 3) {
         pauseButtonListener();
+        console.log("find gap! gap = " + gap + "");
+        clearInterval(timer);
+        startTime = currentTime;
+        pauseButtonListener();
     }
 }
 
 function countSecond() {
     startTime++;
-    console.log(startTime);
     checkDelay();
 }
 
 //再生してからの相対時間を計測
 function countTimeFromStart() {
-    setInterval("countSecond()", 1000);
+    timer = setInterval("countSecond()", 1000);
 }
 
 function play() {
     player.playVideo();
-    
-    if(startTime == 0) {
-        countTimeFromStart();
-    }
+    countTimeFromStart();
 }
 
 function pause() {
