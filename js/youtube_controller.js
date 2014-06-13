@@ -8,6 +8,7 @@ var ytId;
 var done = false;
 var startTime = 0;
 var timer;
+var firstFlag;
 
 
 //apiが読み込めた時のコールバック関数
@@ -28,12 +29,13 @@ function onPlayerReady(evt) {
 }
 
 function onPlayerStateChange(evt) {
-    //too late!!
-    /***
     if(evt.data == YT.PlayerState.PLAYING) {
-        countTimeFromStart();
+        if(firstFlag == 0) {
+            pause();
+            firstFlag = 1;
+            player.seekTo(0-getCurrentPosition(), true);
+        }
     }
-    ***/
 }
 
 //5秒ずれると動画を停止(停止簿ボタン)
@@ -78,7 +80,9 @@ function setYouTubeId(url) {
 }
 
 function loadVideoById() {
-    player.cueVideoById(ytId);
+    //player.cueVideoById(ytId);
+    firstFlag = 0;
+    player.loadVideoById(ytId);
     setHistory("set: " + ytId);
 }
 
