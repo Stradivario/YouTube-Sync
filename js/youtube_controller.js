@@ -17,17 +17,12 @@ function onYouTubePlayerAPIReady() {
         height: '315',
         width: '560',
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange,
+            'onStateChange': onPlayerStateChange
         }
     });
     
 }
         
-function onPlayerReady(evt) {
-    //
-}
-
 function onPlayerStateChange(evt) {
     if(evt.data == YT.PlayerState.PLAYING) {
         if(firstFlag == 0) {
@@ -38,7 +33,7 @@ function onPlayerStateChange(evt) {
     }
 }
 
-//5秒ずれると動画を停止(停止簿ボタン)
+//3秒ずれると動画を停止(停止ボタン)
 function checkDelay() {  
     currentTime = getCurrentPosition();
     var gap = Math.abs(startTime - currentTime);
@@ -80,8 +75,8 @@ function setYouTubeId(url) {
 }
 
 function loadVideoById() {
-    //player.cueVideoById(ytId);
     firstFlag = 0;
+    startTime = 0;
     player.loadVideoById(ytId);
     setHistory("set: " + ytId);
 }
