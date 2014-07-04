@@ -16,7 +16,11 @@ function requestHandler(data) {
         setHistory("pause: " + data.time);
         
     }else if (data.kind == request[3]) {
-        setHistory("Host: " + data.msg);
+        pauseWithSeek(data.time);
+        setHistory("pause: " + data.time);
+        
+    }else if (data.kind == request[4]) {
+        setChatHistory("Host: " + data.msg);
         
     }else {
         return "error";

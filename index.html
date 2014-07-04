@@ -2,16 +2,21 @@
 <head>
     <meta charset="utf-8">
     <title>YouTube Sync</title>
-    <link rel="stylesheet" href="css/index.css">
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
     <script src="js/handler.js"></script>
     <script src="js/youtube_controller.js"></script>
     <script src="js/peer.js"></script>
     <script src="js/ConnectHost.js"></script>
-    
+
     <script type="text/javascript">
-        function pressEnterKey(code) {
-            if(code == 13)
-                msgSend();
+        function pressEnterKey(code, flag) {
+            if(code == 13){
+                if(flag == 0) {
+                    ConnectButtonListener();
+                }else if(flag == 1) {
+                    msgSend();
+                }
+            }
         }
     </script>
 </head>
@@ -23,7 +28,7 @@
         </div>
         <div class="id-input">
             <label>相手のID: </label>
-            <input type="text" id="dst-id">
+            <input type="text" id="dst-id" onkeypress="pressEnterKey(event.keyCode, 0);">
             <input type="button" id="cnt-btn" value="接続" onclick="ConnectButtonListener();">
             <span id="status">接続なし</span>
         </div>
@@ -37,10 +42,12 @@
             <input type="button" value="再生" onclick="playButtonListener();">
             <input type="button" value="停止" onclick="pauseButtonListener();">
             <input type="button" value="同期" onclick="syncButtonListener();">
+            <label if="global-buff">全体のバッファサイズ<span id="global-buff-size"></span>%</label>
+            <label if="local-buff">再生位置からのバッファサイズ<span id="local-buff-size"></span>%</label>
         </div>
         <div class="chat">
             <div class="input">
-                <input type="text" size="48" id="msg" onkeypress="pressEnterKey(event.keyCode);">
+                <input type="text" size="48" id="msg" onkeypress="pressEnterKey(event.keyCode, 1);">
                 <input type="button" value="送信" onclick="msgSend()">
             </div> 
             <div class="output">

@@ -18,6 +18,10 @@ function showWhileStatus() {
 }
 
 function setHistory(msg) {
+    console.log(msg);
+}
+
+function setChatHistory(msg) {
     var msg_history_obj = document.getElementById("msg-history");
     msg_history_obj.value = msg + "\n" + msg_history_obj.value;
 }
@@ -52,6 +56,7 @@ function msgSend() {
     sendContent(data);
     var msg_history_obj = document.getElementById("msg-history");
     msg_history_obj.value = "You : " + message + "\n" + msg_history_obj.value;
+    
 }
 
 //受信
