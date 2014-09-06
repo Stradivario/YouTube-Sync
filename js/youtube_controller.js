@@ -10,10 +10,8 @@ var startTime = 0;
 var timer1;
 var timer2;
 var firstFlag;
-var judge_term = 3;
+var judge_term = 1;
 
-//デバッグ情報
-console.log("set first flag");
 
 //apiが読み込めた時のコールバック関数
 function onYouTubePlayerAPIReady() {
@@ -32,7 +30,7 @@ function onPlayerStateChange(evt) {
             pause();
             firstFlag = 1;
             player.seekTo(0-getCurrentPosition(), true);
-            console.log("unset first flag");
+            console.log("ready to start video.");
         }
     }
 }
@@ -57,8 +55,8 @@ function checkDelay() {
     var gap = Math.abs(startTime - currentTime);
     if(gap >= judge_term) {
         pauseButtonListener();
-        console.log("find gap = " + gap + "");
-        clearInterval(timer);
+        console.log("find gap = " + gap);
+        clearInterval(timer1);
         startTime = currentTime;
         pauseButtonListener();
     }
@@ -66,23 +64,14 @@ function checkDelay() {
 
 function countTimeFromStart() {
     startTime++;
-    console.log(startTime + " seconds from start movie.");
+    console.log(startTime + " seconds from start.");
     //setCurentQuality();
     checkDelay();
-}
-
-function countTimeFromSet() {
-    checkBuff();
 }
 
 //動画を再生してからの相対時間を計測
 function setTimerFromStart() {
     timer1 = setInterval("countTimeFromStart()", 1000);
-}
-
-//動画をセットしてからの相対時間を計測
-function setTimerFromSet() {
-    timer2 = setInterval("countTimeFromSet()", 1000)
 }
 
 function play() {
@@ -105,9 +94,7 @@ function setYouTubeId(url) {
 
 function loadVideoById() {
     firstFlag = 0;
-    console.log("set first flag");
     startTime = 0;
-    setTimerFromSet();
     player.loadVideoById(ytId);
     setHistory("set: " + ytId);
 }
