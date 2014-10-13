@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <title>YouTube Sync</title>
-    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <link rel="stylesheet" href="css/index.css">
     <script src="js/handler.js"></script>
     <script src="js/youtube_controller.js"></script>
     <script src="js/peer.js"></script>
@@ -22,41 +22,38 @@
 </head>
 <body>
     <div class="header">
-        <span>YouTube Sync</span>
+        <h1>YouTube Sync</h1>
         <div class="information">
-            <div>ID: <span id="myId"></span></div>
+            <div>Your ID: <span id="myId"></span></div>
         </div>
         <div class="id-input">
-            <label>相手のID: </label>
+            <label>Friend's ID: </label>
             <input type="text" id="dst-id" onkeypress="pressEnterKey(event.keyCode, 0);">
-            <input type="button" id="cnt-btn" value="接続" onclick="ConnectButtonListener();">
-            <span id="status">接続なし</span>
+            <input type="button" id="cnt-btn" value="connect" onclick="ConnectButtonListener();">
+            <span>Status: <span id="status">disconnect</span></span>
         </div>
     </div>
     <div class="content">
         <div id="player1"></div>
         <div class="control">
-            <input type="text" id="murl" size="80" placeholder="URL">
+            <input type="text" id="murl" size="80" placeholder="YouTube URL">
             <br>
-            <input type="button" value="セット" onclick="initialize();">
-            <input type="button" value="再生" onclick="playButtonListener();">
-            <input type="button" value="停止" onclick="pauseButtonListener();">
-            <input type="button" value="同期" onclick="syncButtonListener();">
-            <label if="global-buff">全体のバッファサイズ<span id="global-buff-size"></span>%</label>
-            <label if="local-buff">再生位置からのバッファサイズ<span id="local-buff-size"></span>%</label>
+            <input type="button" value="set movie" onclick="initialize();">
+            <input type="button" value="play" onclick="playButtonListener();">
+            <input type="button" value="stop" onclick="pauseButtonListener();">
+            <input type="button" value="sync" onclick="syncButtonListener();">
         </div>
+        <!--
         <div class="chat">
             <div class="input">
                 <input type="text" size="48" id="msg" onkeypress="pressEnterKey(event.keyCode, 1);">
-                <input type="button" value="送信" onclick="msgSend()">
+                <input type="button" value="send" onclick="msgSend()">
             </div> 
             <div class="output">
                 <textarea cols="50" rows="25" id="msg-history"></textarea>
             </div>
         </div>
-        <p>4時間動画 http://www.youtube.com/watch?v=OAWyIFA8wVk</p>
-        <p>*巻き戻し、早送りすると動画は一時停止します。</p>
-        <p>*同期ボタンは相手との再生位置を合わせます。</p>
+        -->
     </div>
 </body>
 </html>

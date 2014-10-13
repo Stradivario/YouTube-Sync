@@ -1,45 +1,35 @@
 body {
-    background-color: #white;
+    
 }
 
-div.header {  
-    position: fixed !important;  
-    position: absolute;  
-    top: 0;  
-    left: 0;
-    width: 100%;  
-    height: 45px;  
-    border: solid 1px black;
-    background-color: white;
-}
-
-div.information {
-    margin-left: 200px;
-    margin-top: -15px;
-}
-
-div.id-input {
-    margin-left: 400px;
+h1 {
+    margin-left: 10px;
 }
 
 div.content {
-    margin-top: 45px;
-    background-color: white;
+    margin-left: 20px;
+}
+
+div.information {
+    margin-left: 250px;
+    margin-top: -60px;
+}
+
+div.id-input {
+    margin-left: 250;
 }
 
 #player1 {
-    margin-left: 50px;
-    margin-top: 70px;
+    margin-top: 30px;
 }
 
 .control {
-    margin-left: 60px;
     margin-top: 10px;
 }
 
 div.chat {
-    margin-left: 750px;
-    margin-top: -350px;
+    margin-left: 600px;
+    margin-top: -370px;
 }
 
 #msg, #msg-history {

@@ -5,16 +5,16 @@ var request = ["start", "restart", "pause", "chat"];
 
 function showOnStatus() {
     document.getElementById("dst-id").diabled = "disabled";
-    document.getElementById("status").innerHTML = "接続完了";
+    document.getElementById("status").innerHTML = "connect";
 }
 
 function showOffStatus() {
-    document.getElementById("status").innerHTML = "接続なし";
+    document.getElementById("status").innerHTML = "no connection";
 }
 
 function showWhileStatus() {
     document.getElementById("dst-id").diabled = "disabled";
-    document.getElementById("status").innerHTML = "接続中...";
+    document.getElementById("status").innerHTML = "connecting...";
 }
 
 function setHistory(msg) {
